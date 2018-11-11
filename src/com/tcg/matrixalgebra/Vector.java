@@ -56,7 +56,7 @@ public class Vector implements VSpace<Vector> {
     }
 
     public double dotProduct(Vector other) {
-        if(this.length != other.length) {
+        if (this.length != other.length) {
             throw new IncompatibleVectorException(IncompatibleVectorException.Type.INCORRECT_DIMENSIONS);
         }
         double result = 0;
@@ -80,7 +80,7 @@ public class Vector implements VSpace<Vector> {
 
     @Override
     public Vector vectorAddition(Vector other) {
-        if(this.length != other.length) {
+        if (this.length != other.length) {
             throw new IncompatibleVectorException(IncompatibleVectorException.Type.INCORRECT_DIMENSIONS);
         }
         double[] newVector = new double[this.length];
@@ -102,13 +102,13 @@ public class Vector implements VSpace<Vector> {
     @Override
     public boolean equals(Object o) {
         boolean result;
-        if(o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != this.getClass()) {
             result = false;
-        } else if(o == this) {
+        } else if (o == this) {
             result = true;
         } else {
             Vector other = (Vector) o;
-            if(other.getLength() != this.getLength()) {
+            if (other.getLength() != this.getLength()) {
                 result = false;
             } else {
                 result = true;
@@ -119,5 +119,19 @@ public class Vector implements VSpace<Vector> {
         }
 
         return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("[");
+        for (int i = 0; i < this.length; i++) {
+            str.append(this.items[i]);
+            if (i != this.length - 1) {
+                str.append(", ");
+            }
+        }
+        str.append("]");
+        return str.toString();
     }
 }
